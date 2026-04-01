@@ -5,3 +5,6 @@
 *.snm
 *.toc
 *.vrb
+*.fls
+*.fdb_latexmk
+/main.pdf
