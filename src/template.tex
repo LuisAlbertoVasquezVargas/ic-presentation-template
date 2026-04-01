@@ -1,94 +1,112 @@
+% filepath: src/template.tex
+
 \documentclass[xcolor={dvipsnames}]{beamer}
 
 % ==========================================
-% 1. USER SETTINGS (Update your details here)
+% 1. CONFIGURATION
 % ==========================================
-\newcommand{\MyTitle}{Optimization and Synthesis}
-\newcommand{\MySubTitle}{Advanced Graph Modeling in Molecular Chemistry}
+\newcommand{\MyTitle}{Optimization and Synthesis: \\ \small Advanced Graph Modeling in Molecular Chemistry}
+\newcommand{\MyShortTitle}{Graph Modeling in Chemistry}
 \newcommand{\MyAuthor}{Luis Alberto Vásquez Vargas}
 \newcommand{\MyShortAuthor}{Luis Vásquez}
 \newcommand{\MyInstitute}{IC -- UNICAMP} 
+\newcommand{\MyEmail}{l322989@dac.unicamp.br}
 \newcommand{\MyDate}{March 31, 2026}
 
-% --- MODULAR COLORS ---
+% --- COLOR PALETTE ---
 \definecolor{PrimaryColor}{HTML}{141B41}
 \definecolor{SecondaryColor}{HTML}{306BAC}
 \definecolor{AccentColor}{HTML}{6F9CEB}
+\definecolor{LightAccent}{HTML}{98B9F2}
 \definecolor{AlertColor}{HTML}{918EF4}
 
 % ==========================================
-% 2. MODULAR UI ENGINE (Custom IC Design)
+% 2. THEME SETUP
 % ==========================================
 \mode<presentation>
 {
+  \usetheme{Madrid}
   \usefonttheme{serif}
   \setbeamertemplate{navigation symbols}{}
-  \setbeamertemplate{items}[circle]
-  \setbeamertemplate{caption}[numbered]
   
-  % --- Custom IC Footer ---
-  \setbeamertemplate{footline}{
-    \begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=1.2ex]{footerstyle}
-      \quad \tiny \MyShortAuthor \quad \textbar \quad \MyInstitute \hfill \MyTitle \hfill \insertframenumber / \inserttotalframenumber \quad \vspace{0.05cm}
-    \end{beamercolorbox}
-  }
+  % --- RESTORING TOC STYLE WITH NEW COLORS ---
+  \setbeamertemplate{sections/subsections in toc}[ball]
+  \setbeamercolor{section in toc}{fg=PrimaryColor}
+  \setbeamercolor{subsection in toc}{fg=SecondaryColor}
+  
+  \setbeamercolor{section number projected}{bg=PrimaryColor, fg=white}
+  \setbeamercolor{subsection number projected}{bg=SecondaryColor, fg=white}
 
-  % --- Color & Font Mapping ---
-  \setbeamercolor{footerstyle}{bg=PrimaryColor, fg=white}
-  \setbeamercolor{titlelike}{fg=PrimaryColor}
+  % --- THEME OVERRIDES ---
   \setbeamercolor{structure}{fg=SecondaryColor}
-  \setbeamercolor{alerted text}{fg=AlertColor}
-  \setbeamercolor{block title}{bg=SecondaryColor, fg=white}
-  \setbeamercolor{block body}{bg=AccentColor!10, fg=PrimaryColor}
+  \setbeamercolor{palette primary}{bg=PrimaryColor, fg=white}
+  \setbeamercolor{palette secondary}{bg=SecondaryColor, fg=white}
+  \setbeamercolor{palette tertiary}{bg=AccentColor, fg=white}
   
-  \setbeamerfont{title}{series=\bfseries, size=\Large}
-  \setbeamerfont{author}{size=\small}
-  \setbeamerfont{date}{size=\footnotesize}
-} 
+  \setbeamercolor{author in head/foot}{fg=white, bg=PrimaryColor}
+  \setbeamercolor{title in head/foot}{fg=white, bg=SecondaryColor}
+  \setbeamercolor{date in head/foot}{fg=white, bg=AccentColor}
+  
+  \setbeamercolor{block title}{bg=SecondaryColor, fg=white}
+  \setbeamercolor{block body}{bg=LightAccent!20, fg=PrimaryColor}
+}
 
-% --- PACKAGES ---
+% ==========================================
+% 3. PACKAGES
+% ==========================================
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{chemfig}
 \usepackage[version=3]{mhchem}
 
-% Ensures footer links don't turn default blue
-\usepackage{hyperref}
-\addtobeamertemplate{footline}{\hypersetup{linkcolor=white}}{}
-
-% ==========================================
-% 3. PRESENTATION CONTENT
-% ==========================================
-\title{\MyTitle}
-\subtitle{\MySubTitle}
-\author{\MyAuthor}
+\title[\MyShortTitle]{\MyTitle}
+\author[\MyShortAuthor]{\MyAuthor}
 \institute{\MyInstitute}
 \date{\MyDate}
 
+% ==========================================
+% 4. DOCUMENT CONTENT
+% ==========================================
 \begin{document}
 
 \begin{frame}[plain]
   \titlepage
 \end{frame}
 
-\begin{frame}{IC Modular Template}
-  \begin{itemize}
-    \item **Direct & Minimal:** No heavy default borders or headers.
-    \item **Modularized:** Change the HEX codes in section 2 to restyle the whole deck.
-    \item \alert{Custom Footer:} Designed to handle the IC-UNICAMP affiliation length.
-  \end{itemize}
-  
-  \begin{block}{Scientific Example}
-    \centering
-    \ce{2H2 + O2 -> 2H2O}
-  \end{block}
+\begin{frame}{Outline}
+  \tableofcontents
 \end{frame}
 
-\begin{frame}{Molecular Graphs}
-    \centering
-    \chemfig{A*5(-B-C-D-E-)}
-    \vskip 0.5cm
-    \footnotesize This template works natively with \texttt{chemfig}.
+\section{Methodology}
+\begin{frame}{Representing Molecular Graphs}
+\begin{itemize}
+  \item Molecular structures can be modeled as graphs where atoms are nodes and bonds are edges.
+  \item \textbf{Core Package:} \texttt{chemfig} (Manual bold + color to avoid Beamer's blue alert).
+\end{itemize}
+
+\begin{block}{Benzene Ring Analysis}
+\begin{center}\small\setchemfig{atom sep=1.8em}
+\schemestart
+  \chemfig{*6(-=-=-=)} \quad \ce{->} \quad \text{Model Output}
+\schemestop
+\end{center}
+\end{block}
+\end{frame}
+
+% --- QUESTIONS SLIDE ---
+\section*{Questions}
+\begin{frame}[plain]
+  \centering
+  \vfill
+  \begin{beamercolorbox}[sep=12pt,center,rounded=true,shadow=true]{palette primary}
+    \usebeamerfont{title}\Huge Questions?
+  \end{beamercolorbox}
+  \vfill
+  \textbf{\MyAuthor} \\
+  \small \MyInstitute \\
+  \vspace{0.2cm}
+  \small \texttt{\MyEmail}
+  \vfill
 \end{frame}
 
 \end{document}
