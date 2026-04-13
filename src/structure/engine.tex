@@ -1,0 +1,39 @@
+% filepath: src/structure/engine.tex
+
+% --- COLORS ---
+\definecolor{ColorPrimary}{HTML}{141B41}
+\definecolor{ColorSecondary}{HTML}{306BAC}
+\definecolor{ColorAccent}{HTML}{6F9CEB}
+\definecolor{ColorAccentLight}{HTML}{98B9F2}
+
+% --- THEME CONFIG ---
+\mode<presentation>{
+  \usetheme{Madrid}
+  \usefonttheme{serif}
+  \setbeamertemplate{navigation symbols}{}
+
+  \setbeamertemplate{sections/subsections in toc}[ball]
+  \setbeamercolor{section in toc}{fg=ColorPrimary}
+  \setbeamercolor{subsection in toc}{fg=ColorSecondary}
+  \setbeamercolor{section number projected}{bg=ColorPrimary, fg=white}
+  \setbeamercolor{subsection number projected}{bg=ColorSecondary, fg=white}
+
+  \setbeamercolor{normal text}{fg=ColorPrimary}
+  \setbeamercolor{structure}{fg=ColorSecondary}
+
+  \setbeamercolor{palette primary}{bg=ColorPrimary, fg=white}
+  \setbeamercolor{palette secondary}{bg=ColorSecondary, fg=white}
+  \setbeamercolor{palette tertiary}{bg=ColorAccent, fg=white}
+
+  \setbeamercolor{author in head/foot}{fg=white, bg=ColorPrimary}
+  \setbeamercolor{title in head/foot}{fg=white, bg=ColorSecondary}
+  \setbeamercolor{date in head/foot}{fg=white, bg=ColorAccent}
+
+  \setbeamercolor{block title}{bg=ColorSecondary, fg=white}
+  \setbeamercolor{block body}{bg=ColorAccentLight!20, fg=ColorPrimary}
+}
+
+% --- PACKAGES ---
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}

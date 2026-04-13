@@ -2,81 +2,9 @@
 
 \documentclass[xcolor={dvipsnames}]{beamer}
 
-% =========================================================
-% 1. METADATA
-% =========================================================
-\newcommand{\TitleText}{Optimization and Synthesis: \\ \small Advanced Graph Modeling in Molecular Chemistry}
-\newcommand{\ShortTitleText}{Graph Modeling in Chemistry}
-\newcommand{\AuthorFull}{Luis Alberto Vásquez Vargas}
-\newcommand{\AuthorShort}{Luis Vásquez}
-\newcommand{\InstituteName}{IC -- UNICAMP}
-\newcommand{\AuthorEmail}{l322989@dac.unicamp.br}
-\newcommand{\PresentationDate}{March 31, 2026}
+\input{structure/engine}
+\input{structure/metadata}
 
-% =========================================================
-% 2. COLORS
-% =========================================================
-\definecolor{ColorPrimary}{HTML}{141B41}
-\definecolor{ColorSecondary}{HTML}{306BAC}
-\definecolor{ColorAccent}{HTML}{6F9CEB}
-\definecolor{ColorAccentLight}{HTML}{98B9F2}
-
-% =========================================================
-% 3. THEME
-% =========================================================
-\mode<presentation>{
-  \usetheme{Madrid}
-  \usefonttheme{serif}
-
-  % remove junk
-  \setbeamertemplate{navigation symbols}{}
-
-  % --- TOC (force correct colors) ---
-  \setbeamertemplate{sections/subsections in toc}[ball]
-  \setbeamercolor{section in toc}{fg=ColorPrimary}
-  \setbeamercolor{subsection in toc}{fg=ColorSecondary}
-
-  \setbeamercolor{section number projected}{bg=ColorPrimary, fg=white}
-  \setbeamercolor{subsection number projected}{bg=ColorSecondary, fg=white}
-
-  % --- global colors ---
-  \setbeamercolor{normal text}{fg=ColorPrimary}
-  \setbeamercolor{structure}{fg=ColorSecondary}
-
-  % --- palettes (Madrid dependency) ---
-  \setbeamercolor{palette primary}{bg=ColorPrimary, fg=white}
-  \setbeamercolor{palette secondary}{bg=ColorSecondary, fg=white}
-  \setbeamercolor{palette tertiary}{bg=ColorAccent, fg=white}
-
-  % --- header/footer ---
-  \setbeamercolor{author in head/foot}{fg=white, bg=ColorPrimary}
-  \setbeamercolor{title in head/foot}{fg=white, bg=ColorSecondary}
-  \setbeamercolor{date in head/foot}{fg=white, bg=ColorAccent}
-
-  % --- blocks ---
-  \setbeamercolor{block title}{bg=ColorSecondary, fg=white}
-  \setbeamercolor{block body}{bg=ColorAccentLight!20, fg=ColorPrimary}
-}
-
-% =========================================================
-% 4. PACKAGES
-% =========================================================
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{chemfig}
-\usepackage[version=3]{mhchem}
-
-% =========================================================
-% 5. BINDING
-% =========================================================
-\title[\ShortTitleText]{\TitleText}
-\author[\AuthorShort]{\AuthorFull}
-\institute{\InstituteName}
-\date{\PresentationDate}
-
-% =========================================================
-% 6. DOCUMENT
-% =========================================================
 \begin{document}
 
 \begin{frame}[plain]
@@ -87,46 +15,9 @@
   \tableofcontents
 \end{frame}
 
-\section{Methodology}
-
-\begin{frame}{Representing Molecular Graphs}
-\begin{itemize}
-  \item Molecular structures can be modeled as graphs where atoms are nodes and bonds are edges.
-  \item \textbf{Core Package:} \texttt{chemfig}
-\end{itemize}
-
-\begin{block}{Benzene Ring Analysis}
-\begin{center}
-\small
-\setchemfig{atom sep=1.8em}
-\schemestart
-  \chemfig{*6(-=-=-=)} \quad \ce{->} \quad Model Output
-\schemestop
-\end{center}
-\end{block}
-\end{frame}
-
-% =========================================================
-% QUESTIONS
-% =========================================================
-\section*{Questions}
-
-\begin{frame}[plain]
-  \centering
-  \vfill
-
-  \begin{beamercolorbox}[sep=12pt,center,rounded=true,shadow=true]{palette primary}
-    \usebeamerfont{title}\Huge Questions?
-  \end{beamercolorbox}
-
-  \vfill
-
-  \textbf{\AuthorFull} \\
-  \small \InstituteName \\
-  \vspace{0.2cm}
-  \small \texttt{\AuthorEmail}
-
-  \vfill
-\end{frame}
+% --- MODULES ---
+\input{sections/01_intro}
+\input{sections/02_methodology}
+\input{sections/99_questions}
 
 \end{document}
