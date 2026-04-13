@@ -35,7 +35,7 @@ The structure follows the convention of the Topicos (Scientific Redaction) repor
 
 ```text
 .
-├── README.md               # Setup and LWC instructions
+├── README.md               # Setup
 └── src/
     ├── main.tex            # Main entry point
     ├── structure/
@@ -52,4 +52,5 @@ The structure follows the convention of the Topicos (Scientific Redaction) repor
 Use this command to generate a full project dump for LLM context. This command prunes hidden directories and non-source files, ensuring the model receives a clean representation of the current project state.
 
 ```bash
-find . -path './.*' -prune -o -name "*.tex" -exec echo "--- {} ---" \; -exec cat {} +
+find . -path './.*' -prune -o -name "*.tex" -exec cat {} +
+```
