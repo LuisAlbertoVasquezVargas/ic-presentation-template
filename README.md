@@ -52,5 +52,5 @@ The structure follows the convention of the Topicos (Scientific Redaction) repor
 Use this command to generate a full project dump for LLM context. This command prunes hidden directories and non-source files, ensuring the model receives a clean representation of the current project state.
 
 ```bash
-find . -path './.*' -prune -o -name "*.tex" -exec cat {} +
+find src -name "*.tex" | sort -u | xargs tail -n +1
 ```
