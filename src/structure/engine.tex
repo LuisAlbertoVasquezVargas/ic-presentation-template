@@ -1,39 +1,114 @@
 % filepath: src/structure/engine.tex
 
-% --- COLORS ---
-\definecolor{ColorPrimary}{HTML}{141B41}
-\definecolor{ColorSecondary}{HTML}{306BAC}
-\definecolor{ColorAccent}{HTML}{6F9CEB}
-\definecolor{ColorAccentLight}{HTML}{98B9F2}
+% ==========================================
+% 2. PACKAGES
+% ==========================================
+\usepackage[T1]{fontenc}
+\usepackage{beramono}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+\usepackage{fontawesome}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage{forest}
+\usepackage{etoolbox}
 
-% --- THEME CONFIG ---
-\mode<presentation>{
+\graphicspath{ {img/} }
+
+% ==========================================
+% 3. COLORS & HYPERREF
+% ==========================================
+\definecolor{PrimaryColor}{HTML}{141B41}
+\definecolor{SecondaryColor}{HTML}{306BAC}
+\definecolor{AccentColor}{HTML}{6F9CEB}
+\definecolor{LightAccent}{HTML}{98B9F2}
+\definecolor{AlertColor}{HTML}{918EF4}
+
+\hypersetup{
+    colorlinks=true,
+    citecolor=SecondaryColor,
+    linkcolor=PrimaryColor, 
+    urlcolor=AccentColor
+}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1.0em}{}{}
+\makeatother
+
+% ==========================================
+% 4. THEME & TEMPLATE SETUP
+% ==========================================
+\mode<presentation>
+{
   \usetheme{Madrid}
+  \usecolortheme{default}
   \usefonttheme{serif}
   \setbeamertemplate{navigation symbols}{}
 
   \setbeamertemplate{sections/subsections in toc}[ball]
-  \setbeamercolor{section in toc}{fg=ColorPrimary}
-  \setbeamercolor{subsection in toc}{fg=ColorSecondary}
-  \setbeamercolor{section number projected}{bg=ColorPrimary, fg=white}
-  \setbeamercolor{subsection number projected}{bg=ColorSecondary, fg=white}
+  \setbeamercolor{section number projected}{bg=PrimaryColor, fg=white}
 
-  \setbeamercolor{normal text}{fg=ColorPrimary}
-  \setbeamercolor{structure}{fg=ColorSecondary}
+  \setbeamertemplate{frametitle}{
+      \nointerlineskip
+      \begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1.5ex,leftskip=0.3cm,rightskip=0.3cm]{palette primary}
+          \usebeamerfont{frametitle}\insertsectionnumber.~~\insertframetitle
+      \end{beamercolorbox}
+  }
 
-  \setbeamercolor{palette primary}{bg=ColorPrimary, fg=white}
-  \setbeamercolor{palette secondary}{bg=ColorSecondary, fg=white}
-  \setbeamercolor{palette tertiary}{bg=ColorAccent, fg=white}
+  \setbeamertemplate{footline}{
+    \leavevmode%
+    \hbox{%
+    \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\MyShortAuthor~~\textbar~~\MyInstitute
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\MyShortTitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\MyDate\hspace*{2em}
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}}%
+    \vskip0pt%
+  }
 
-  \setbeamercolor{author in head/foot}{fg=white, bg=ColorPrimary}
-  \setbeamercolor{title in head/foot}{fg=white, bg=ColorSecondary}
-  \setbeamercolor{date in head/foot}{fg=white, bg=ColorAccent}
-
-  \setbeamercolor{block title}{bg=ColorSecondary, fg=white}
-  \setbeamercolor{block body}{bg=ColorAccentLight!20, fg=ColorPrimary}
+  \setbeamercolor{structure}{fg=SecondaryColor}
+  \setbeamercolor{palette primary}{bg=PrimaryColor, fg=white}
+  \setbeamercolor{palette secondary}{bg=SecondaryColor, fg=white}
+  \setbeamercolor{palette tertiary}{bg=AccentColor, fg=white}
+  \setbeamercolor{titlelike}{parent=palette primary}
+  \setbeamercolor{author in head/foot}{fg=white, bg=PrimaryColor}
+  \setbeamercolor{title in head/foot}{fg=white, bg=SecondaryColor}
+  \setbeamercolor{date in head/foot}{fg=white, bg=AccentColor}
+  \setbeamercolor{block title}{bg=SecondaryColor, fg=white}
+  \setbeamercolor{block body}{bg=LightAccent!20, fg=PrimaryColor}
+  \setbeamercolor{alerted text}{fg=AlertColor}
+  
+  \setbeamercolor{block title example}{bg=SecondaryColor, fg=white}
+  \setbeamercolor{block body example}{bg=LightAccent!10, fg=PrimaryColor}
 }
 
-% --- PACKAGES ---
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{booktabs}
+% ==========================================
+% 5. AUTOMATIC SECTION BREAK SLIDES
+% ==========================================
+\AtBeginSection[]
+{
+  \begin{frame}[plain, noframenumbering]
+    \vfill
+    \centering
+    \begin{minipage}{0.9\textwidth}
+        \begin{beamercolorbox}[sep=12pt,center,rounded=true]{palette primary}
+            \centering
+            \hypersetup{linkcolor=white}
+            {\normalsize \textbf{SECTION \thesection}} \
+            \vspace{0.2cm}
+            {\color{white!30}\rule{0.7\textwidth}{0.6pt}} \
+            \vspace{0.4cm}
+            {\LARGE \textbf{\insertsection}}
+            \vspace{0.3cm}
+        \end{beamercolorbox}
+    \end{minipage}
+    \vfill
+  \end{frame}
+}
