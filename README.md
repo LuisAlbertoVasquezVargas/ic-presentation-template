@@ -1,114 +1,55 @@
+# IC Presentation Template
 
-# ic-presentation-template (UNICAMP)
+A modular LaTeX Beamer template designed for technical presentations, specifically optimized for Computer Science and Scientific Redaction workflows.
 
-A modular LaTeX presentation template designed for the **Institute of Computing (IC)** community.
+## 🛠 Local Setup
 
-This template avoids outdated Beamer defaults and provides a clean, high-contrast, and maintainable structure with minimal configuration.
+This project is designed for a terminal-based LaTeX environment. It avoids dependencies on cloud editors to ensure full control over the build pipeline.
 
----
+### Installation
 
-## 🚀 Status
-
-- **Overleaf:** Verified (March 31, 2026)
-- **Compiler:** pdfLaTeX
-- **TeX Live:** 2025/2026 compatible
-
----
-
-## ✨ Features
-
-- **Clean Layout:** Removes default Beamer clutter for a modern look
-- **Consistent Structure:** Clear separation between metadata, theme, and content
-- **Modular Colors:** Centralized color palette (Primary, Secondary, Accent)
-- **Stable TOC Styling:** Table of contents colors behave predictably
-- **Scientific Ready:** Includes `chemfig` and `mhchem`
-- **No Hidden Magic:** Minimal overrides, everything explicit
-
----
-
-## 📁 Project Structure
-
-```
-
-.
-├── src/
-│   └── main.tex
-└── README.md
-
-````
-
----
-
-## 🛠️ Usage
-
-### Option A: Overleaf (Cloud - Beginner Friendly)
-
-1. Create a new project in **Overleaf**
-2. Copy the contents of `src/main.tex`
-3. Paste into Overleaf
-4. Update metadata at the top of the file
-5. Click **Recompile**
-
----
-
-### Option B: Local Setup (Arch / Omarchy)
-
-#### Install Dependencies
+To install the full set of dependencies on Arch Linux (or Omarchy), run:
 
 ```bash
 sudo pacman -S texlive-basic texlive-latexextra texlive-fontsrecommended \
                texlive-fontsextra texlive-bibtexextra texlive-plaingeneric \
-               texlive-binextra texlive-science biber
-````
+               texlive-binextra texlive-science biber zathura
+```
 
----
+### Build Instructions
 
-#### Continuous Compilation (Recommended)
+The following command prepares the output directory, sets the search paths for TeX components, and launches `latexmk` in continuous preview mode with Zathura:
 
 ```bash
-latexmk -pvc -pdf src/main.tex
+mkdir -p output && find output -type f -delete && \
+trap 'pkill -P $$ zathura' EXIT; \
+BIBINPUTS="./src/sections/:" \
+BSTINPUTS="./src/sections/:" \
+TEXINPUTS="./src//:./src/img//:" \
+latexmk -pdf -pvc -e '$pdf_previewer="zathura %S"' -outdir=output src/main.tex
 ```
 
----
+## 📂 Project Structure
 
-## ✏️ Customization
+The structure follows the convention of the Topicos (Scientific Redaction) report for seamless content porting:
 
-### Metadata
-
-Edit the following section in `main.tex`:
-
-```tex
-% 1. METADATA
+```text
+.
+├── README.md               # Setup and LWC instructions
+└── src/
+    ├── main.tex            # Main entry point
+    ├── structure/
+    │   ├── engine.tex      # LaTeX packages and Beamer configuration
+    │   └── metadata.tex    # Presentation and author information
+    └── sections/           # Modular slide files
+        ├── 01_intro.tex
+        ├── 02_methodology.tex
+        └── 99_questions.tex
 ```
 
-You can change:
+## 🚀 Last Working Code (LWC)
 
-* title
-* author
-* institute
-* date
+Use this command to generate a full project dump for LLM context. This command prunes hidden directories and non-source files, ensuring the model receives a clean representation of the current project state.
 
----
-
-### 🎨 Colors
-
-Edit:
-
-```tex
-% 2. COLORS
-```
-
-Available tokens:
-
-* `ColorPrimary`
-* `ColorSecondary`
-* `ColorAccent`
-* `ColorAccentLight`
-
----
-
-## 🎓 Affiliation
-
-Developed by **Luis Alberto Vásquez Vargas**
-Institute of Computing (IC) — UNICAMP
-
+```bash
+find . -path './.*' -prune -o -name "*.tex" -exec echo "--- {} ---" \; -exec cat {} +
