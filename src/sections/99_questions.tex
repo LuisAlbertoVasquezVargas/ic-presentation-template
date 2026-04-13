@@ -1,16 +1,59 @@
 % filepath: src/sections/99_questions.tex
-
 \section*{Questions}
 
 \begin{frame}[plain]
-    \centering
-    \vfill
-    \begin{beamercolorbox}[sep=12pt,center,rounded=true,shadow=true]{palette primary}
-        \usebeamerfont{title}\Huge Questions?
-    \end{beamercolorbox}
-    \vfill
-    \textbf{\MyAuthor} \\
-    \small \MyInstitute \\
-    \small \texttt{\MyEmail}
-    \vfill
+  \centering
+  \vfill
+  \begin{beamercolorbox}[sep=12pt,center,rounded=true,shadow=true]{palette primary}
+    \usebeamerfont{title}\Huge Questions? \\
+    \vspace{0.3cm}
+    \usebeamerfont{title}\Large Obrigado! \raisebox{-1pt}{\(\mathbf{\ddot{\smile}}\)}
+  \end{beamercolorbox}
+  \vfill
+  
+  \begin{columns}[onlytextwidth, T]
+    \column{0.5\textwidth}
+      \centering
+      \small \textbf{Problem Modeling} \\
+      \vspace{0.2cm}
+      \begin{tikzpicture}[scale=0.8]
+        % Graph nodes representing courses/students
+        \node[circle, draw=PrimaryColor, fill=PrimaryColor!10, inner sep=2pt] (n1) at (0,0.8) {\tiny C1};
+        \node[circle, draw=PrimaryColor, fill=PrimaryColor!10, inner sep=2pt] (n2) at (1.2,1.2) {\tiny C2};
+        \node[circle, draw=PrimaryColor, fill=PrimaryColor!10, inner sep=2pt] (n3) at (2,0.4) {\tiny C3};
+        \node[circle, draw=PrimaryColor, fill=PrimaryColor!10, inner sep=2pt] (n4) at (0.8,-0.2) {\tiny C4};
+        
+        % Interference edges
+        \draw[thick, SecondaryColor!50] (n1) -- (n2);
+        \draw[thick, SecondaryColor!50] (n1) -- (n4);
+        \draw[thick, SecondaryColor!50] (n2) -- (n3);
+        \draw[thick, SecondaryColor!50] (n3) -- (n4);
+        \draw[thick, SecondaryColor!50] (n2) -- (n4);
+      \end{tikzpicture}
+      
+    \column{0.5\textwidth}
+      \centering
+      \small \textbf{Search Reduction} \\
+      \vspace{0.2cm}
+      \begin{tikzpicture}[scale=0.8]
+        % Axes
+        \draw[->] (0,0) -- (2.5,0) node[right] {\tiny Steps};
+        \draw[->] (0,0) -- (0,1.5);
+        
+        % Manual/Brute Force (Long Bar)
+        \fill[AlertColor!60] (0,0.8) rectangle (2.2,1.2);
+        \node[anchor=south west] at (0,1.2) {\tiny Brute Force};
+        
+        % AI-Augmented (Very Short Bar)
+        \fill[AccentColor] (0,0.2) rectangle (0.1,0.6);
+        \node[anchor=north west] at (0.1,0.4) {\tiny Hybrid (\textbf{3,000x})};
+      \end{tikzpicture}
+  \end{columns}
+
+  \vfill
+  \textbf{\MyAuthor} \\
+  \small \MyInstitute \\
+  \vspace{0.2cm}
+  \small \texttt{\MyEmail}
+  \vfill
 \end{frame}
