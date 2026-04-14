@@ -1,8 +1,5 @@
 % filepath: src/structure/engine.tex
 
-% ==========================================
-% 2. PACKAGES
-% ==========================================
 \usepackage[T1]{fontenc}
 \usepackage{beramono}
 \usepackage{amsmath, amsfonts, amssymb}
@@ -19,9 +16,6 @@
 
 \graphicspath{ {img/} }
 
-% ==========================================
-% 3. COLORS & HYPERREF
-% ==========================================
 \definecolor{PrimaryColor}{HTML}{141B41}
 \definecolor{SecondaryColor}{HTML}{306BAC}
 \definecolor{AccentColor}{HTML}{6F9CEB}
@@ -39,9 +33,6 @@
 \patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1.0em}{}{}
 \makeatother
 
-% ==========================================
-% 4. THEME & TEMPLATE SETUP
-% ==========================================
 \mode<presentation>
 {
   \usetheme{Madrid}
@@ -54,8 +45,14 @@
 
   \setbeamertemplate{frametitle}{
       \nointerlineskip
-      \begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1.5ex,leftskip=0.3cm,rightskip=0.3cm]{palette primary}
-          \usebeamerfont{frametitle}\insertsectionnumber.~~\insertframetitle
+      \begin{beamercolorbox}[wd=\paperwidth,ht=5ex,dp=2.5ex,leftskip=0.3cm,rightskip=0.3cm]{palette primary}
+          \usebeamerfont{frametitle}
+          \fontseries{sb}\selectfont
+          \Large
+          \ifnum\insertsectionnumber>0
+            \insertsectionnumber.~~
+          \fi
+          \insertframetitle
       \end{beamercolorbox}
   }
 
@@ -91,9 +88,6 @@
   \setbeamercolor{block body example}{bg=LightAccent!10, fg=PrimaryColor}
 }
 
-% ==========================================
-% 5. AUTOMATIC SECTION BREAK SLIDES
-% ==========================================
 \AtBeginSection[]
 {
   \begin{frame}[plain, noframenumbering]
