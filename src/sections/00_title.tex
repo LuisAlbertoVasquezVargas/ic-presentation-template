@@ -3,24 +3,45 @@
 \begin{frame}[plain]
   \vfill
   \centering
+
   \begin{beamercolorbox}[sep=12pt,center,rounded=true]{palette primary}
-      \usebeamerfont{title}\inserttitle
+      {\fontsize{18}{24}\selectfont \textsc{\inserttitle}}
   \end{beamercolorbox}
 
-  \vspace{0.4cm}
-  \textbf{\insertauthor} \quad \small (RA: \MyRA) \\
+  \vspace{0.6cm}
+
+  {\large \textbf{\insertauthor}} \\
+  \vspace{0.1cm}
+  \small (RA: \MyRA) \\
   \textit{\small \MyInstitute}
 
-  \vfill
+  \vspace{0.6cm}
+
   \begin{beamercolorbox}[sep=8pt,center,rounded=true]{block body}
-      \textbf{\MyCourse} \\
-      \vspace{0.1cm}
-      \small \textbf{Instructor:} \MyInstructor \\
-      \small \textbf{Advisor:} \MyAdvisor
+      {\small \textbf{\MyCourse}}
+      \vspace{0.3cm}
+      
+      \begin{columns}[onlytextwidth, T]
+          \column{0.48\linewidth}
+          \centering
+          \footnotesize \textbf{Instructor} \\ 
+          \vspace{0.05cm}
+          \footnotesize \MyInstructor
+          
+          \column{0.48\linewidth}
+          \centering
+          \footnotesize \textbf{Advisor} \\ 
+          \vspace{0.05cm}
+          \footnotesize \MyAdvisor
+      \end{columns}
   \end{beamercolorbox}
 
   \vfill
+
   \scriptsize
   \texttt{\MyEmail} \\
+  \vspace{0.1cm}
   \MyDate
+  
+  \vspace{0.2cm}
 \end{frame}
