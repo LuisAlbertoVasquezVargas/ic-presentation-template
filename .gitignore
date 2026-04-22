@@ -1,3 +1,4 @@
+# LaTeX Build Artifacts
 *.aux
 *.log
 *.nav
@@ -7,4 +8,7 @@
 *.vrb
 *.fls
 *.fdb_latexmk
+
+# Output Files
 /main.pdf
+output/
