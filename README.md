@@ -1,3 +1,5 @@
+<!-- README.md -->
+
 # IC Presentation Template
 
 A modular LaTeX Beamer template designed for technical presentations, specifically optimized for Computer Science and Scientific Redaction workflows.
@@ -7,6 +9,13 @@ A modular LaTeX Beamer template designed for technical presentations, specifical
 This project is designed for a terminal-based LaTeX environment. It avoids dependencies on cloud editors to ensure full control over the build pipeline.
 
 ### Installation
+
+To clone the repository and enter the directory:
+
+```bash
+git clone https://github.com/LuisAlbertoVasquezVargas/ic-presentation-template.git
+cd ~/Projects/ic-presentation-template
+```
 
 To install the full set of dependencies on Arch Linux (or Omarchy), run:
 
