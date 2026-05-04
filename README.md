@@ -25,6 +25,23 @@ sudo pacman -S texlive-basic texlive-latexextra texlive-fontsrecommended \
                texlive-binextra texlive-science biber zathura
 ```
 
+#### For Ubuntu 22.04.5 LTS
+Run the following to install the specific LaTeX and system dependencies:
+
+```bash
+sudo apt update && sudo apt install -y \
+    texlive-latex-base \
+    texlive-latex-recommended \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-science \
+    texlive-bibtex-extra \
+    biber \
+    latexmk \
+    zathura
+```
+
 ### Build Instructions
 
 The following command prepares the output directory, sets the search paths for TeX components, and launches `latexmk` in continuous preview mode with Zathura:
